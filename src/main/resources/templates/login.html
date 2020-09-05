@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+</head>
+<body>
+    <form th:action="@{/user/login}" th:object="${user}" method="post">
+        <label for="username">username:</label>
+        <input type="text" name="username" id="username"/>
+        <label for="password">password:</label>
+        <input type="text" name="password" id="password"/>
+        <input type="submit" value="登陆">
+        <!--判断, msg不为空才显示-->
+        <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+    </form>
+
+
+    <!--这里报错是因为idea的bug，官方说会在以后修复，不知道啥时候呢。-->
+    <h5> <span th:text="${result}"></span></h5>
+    <a th:href="@{/register}">注册</a>
+</body>
+</html>

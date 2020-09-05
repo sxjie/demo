@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/common.css">
+
+</head>
+
+<body>
+
+<!-- 顶部 -->
+<div class="topbar">
+    <span>TEST</span>
+    <div style="float: right;">
+        欢迎:<span style="right: 500px;"  th:text="${session.user}?${session.user.getUsername()}:'（您未登录）'" />
+        <a>logout</a>
+    </div>
+
+</div>
+<!-- 左边导航菜单开始 -->
+<div class="sidebar">
+    <ul class="sidebar-list">
+        <li>
+            <a th:href="@{/hello}" target="sidebar">
+                <span>首页</span>
+            </a>
+        </li>
+        <li class="parent">
+            <a href="" class="glyphicon glyphicon-chevron-down">
+                <span>一级</span>
+            </a>
+            <ul>
+                <li class="active">
+                    <a th:href="@{/findUserList}" target="sidebar">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        用户列表
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#" target="sidebar">
+                        Test1
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#" target="sidebar">
+                        Test2
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#" target="sidebar">
+                        Test3
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#" target="sidebar">
+                        Test4
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="parent">
+            <a href="">
+                <span>权限管理</span>
+            </a>
+            <ul>
+                <li class="active">
+                    <a href="#" target="sidebar">
+                        Test1
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#" target="sidebar">
+                        Test2
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#" target="sidebar">
+                        Test3
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#" target="sidebar">
+                        Test4
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
+    </ul>
+</div>
+
+<!-- contents -->
+<div class="contents">
+    <iframe src="hello" name="sidebar" style="align-content: center" scrolling="no" frameborder="0" width="100%" height="1500px"></iframe>
+</div>
+
+</body>
+    <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+</html>

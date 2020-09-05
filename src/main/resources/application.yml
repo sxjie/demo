@@ -1,0 +1,63 @@
+# 公共配置
+# server
+server:
+  port: 9527
+  tomcat:
+    uri-encoding: UTF-8
+# datasource
+spring:
+  profiles:
+    active: dev
+  datasource:
+    #    url: jdbc:mysql://localhost:3306/shenxiaojie?useUnicode=true&characterEncoding=utf8&useSSL=false
+    #    username: root
+    #    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    cache: false
+
+# mybatis
+mybatis:
+  type-aliases-package: com.hexin.entity
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+#分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: false
+  supportMethodsArguments: true
+  params: count=countSql
+
+# redis
+redis:
+  #  host: 127.0.0.1
+  host: 192.168.24.133
+  port: 6379
+  password: 123456
+  pool:
+    maxActive: 1024
+    maxIdle: 150
+    minIdle: 100
+    maxTotal: 150
+    maxWait: 7000
+    testOnBorrow: true
+    reconnectRetryCount: 50
+    reconnectRetryWaittime: 7000
+
+
+  ## 更改环境 java -jar -Dspring.profiles.active=prod test-0.0.1-SNAPSHOT.jar
+
+
+
+## 微信相关配置
+wx:
+  configs:
+    appId: wxbfc20fd7bbef7eaa
+    appsecret: 5f91fb5c834a52e224b663c21c3b4717
+    token: shenxiaojie
+    url: http://tneqd5.natappfree.cc

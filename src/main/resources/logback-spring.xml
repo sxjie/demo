@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+   <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/Users/shenxiaojie/Desktop/javasearch.hexindai.com/server1/logs/hexin-search-api.log
+        </file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>
+                /Users/shenxiaojie/Desktop/javasearch.hexindai.com/server1/logs/hexin-search-api.log.%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+      <!-- project default level -->
+    <logger name="com.hexin" level="INFO"/>
+    <logger name="org.apache.ibatis" level="INFO"/>
+    <logger name="java.sql" level="INFO"/>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="com.hexin.utils.mapper" level="ERROR"/>
+
+    <!--log4jdbc -->
+    <logger name="jdbc.sqltiming" level="INFO"/>
+
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </root>
+</configuration>

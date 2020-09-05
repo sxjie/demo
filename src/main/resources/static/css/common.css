@@ -1,0 +1,54 @@
+
+body{
+	margin: 0;padding: 0;
+}
+/* 头部菜单开始 */
+.topbar{background: #87CEFA;width: auto; padding: 14px;}
+.topbar_status{right: 200px; left: auto; float: right;}
+.logout{
+    float: right;
+}
+
+
+/* 左边菜单开始 */
+.sidebar {float: left;background-color: #F5F5F5; width: 220px;height: 1000px; border-right: 1px solid #C0C0C0; }
+.sidebar ul {-webkit-padding-start: 0px; -moz-padding-start: 0px;background: #F8F8FF; }
+.sidebar li {list-style: none; border-bottom: 1px solid #C0C0C0;}
+.sidebar-list > li > a {display: block; padding: 0 0 0 20px; border-left: 3px solid transparent;color: #696969; font-size: 1.077rem; line-height: 38px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; text-decoration: none;}
+.sidebar-list > li > a > span {font-size: 14px;}
+.sidebar-list > li.active > a {color: #696969; background: #87CEFA; border-left-color: #18bc9c;}
+.sidebar-list > li > a:hover {text-decoration: none; background-color: #87CEFA;border-left-color: #18bc9c;}
+.sidebar-list > li > ul {display: none; background-color: #F0FFFF; list-style: none; line-height: 20px; margin: 0 1px;} /* 二级菜单背景 */
+.sidebar-list > li ul li > a {padding: 8px 15px 8px 49px; color: #696969; font-size: 12px; display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; text-decoration: none;}
+.sidebar-list > li ul li > a:hover {color: #1E90FF; background-color: white;}
+.sidebar-list > li ul li > a:focus {color: red; background: white}
+
+
+/* 主体内容开始 */
+/*.contents {float: left; background-color: red;width: 88%; height: 1000px;}
+*/
+.contents {width: auto; height: auto; padding: 20px 10px 0px 240px;}
+
+
+/*.sidebar-list > li > a.open {*/
+	/*-webkit-transform: rotate(180deg);*/
+	/*-ms-transform: rotate(180deg);*/
+	/*-o-transform: rotate(180deg);*/
+	/*transform: rotate(180deg);*/
+/*}*/
+
+/*.accordion li i.fa-chevron-down {*/
+	/*right: 12px;*/
+	/*left: auto;*/
+	/*font-size: 16px;*/
+/*}*/
+
+
+/* 边框圆角 */
+/*.parent{
+	margin-top: 3px;
+    padding: 0;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    border-color: #DDDDDD;
+}*/

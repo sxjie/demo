@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+<div class="table-responsive">
+    <!-- userlist top -->
+    <div>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addUser">添加用户</button>
+        <button type="button" class="btn btn-danger">批量删除</button>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>姓名</th>
+            <th>密码</th>
+            <th>昵称</th>
+            <th>性别</th>
+            <th>状态</th>
+            <th>创建时间</th>
+            <th>修改时间</th>
+            <th>编辑</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${userList}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.nickName}"></td>
+            <td th:text="${user.sex}=='0'?'男':'女'"></td>
+            <td th:switch="${user.status}">
+                <span th:case="0">默认状态</span>
+                <span th:case="1">未支付</span>
+                <span th:case="2">已支付</span>
+                <span th:case="3">订单已完成</span>
+            </td>
+            <td th:text="${#dates.format(user.createTime, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${#dates.format(user.updateTime, 'yyyy-MM-dd HH:mm')}"></td>
+            <td>
+                <a th:href="@{'/delUserById/'+${user.id}}" > 删除</a>
+                <a th:href="@{'/findUserById/.'+${user.id}}" > &nbsp;修改 </a>
+            </td>
+
+
+            <!--<td>男：<input type="radio" th:checked="${user.id % 2 != 0}"/></td>-->
+            <!--<td><input type="radio" th:if="${user.id % 2 == 0}"/></td>-->
+            <!--<td>-->
+            <!--<select>-->
+            <!--<option>请选择</option>-->
+            <!--<option th:selected="${user.id % 2 == 0}">北京</option>-->
+            <!--<option value="2">南京</option>-->
+            <!--</select>-->
+            <!--</td>-->
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="form-horizontal" th:action="@{/insertUser}" th:object="${user}" method="post">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">用户名：</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" value="用户名" name="username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">密码</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">昵称</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="nickName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">性别</label>
+                        <div class="col-sm-9">
+                            <label>
+                                <input type="radio" name="sex" value="0" checked> &nbsp;&nbsp;男 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </label>
+                            <label>
+                                <input type="radio" name="sex" value="1">&nbsp;&nbsp;女
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">状态</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="status" th:value="0">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary">添加</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+</html>

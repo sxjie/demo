@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<script th:src="@{js/jquery.min.js}"></script>
+<body>
+
+<form id="fm" method="post">
+    <input type="text" name="username" id="username" th:value="${userInfo.username}"/>
+    <input type="text" name="password" id="password" th:value="${userInfo.password}"/>
+</form>
+
+
+
+<button onclick="submit()">aaaaa</button>
+<div id="show"></div>
+
+</body>
+</html>
+
+
+<script>
+
+    $(function () {
+        alert("11")
+        $.post("/findAll", $(this).serialize()
+            , function (data) {
+                if (data) {
+                    alert(data);
+                    //window.location.href = "/viewTest";
+                    $("#show").html(data);
+                } else {
+                    alert("新增失败");
+                }
+            });
+    })
+
+    function submit() {
+        alert("222")
+        $.ajax({
+            url: '/register',
+            method: 'post',
+            data: $("#fm").serialize(),
+            contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+            success: function (result) {
+                if (result != null) {
+                    alert("修改成功！");
+                    window.location.href = "/register";
+                }
+            },
+            error: function (data) {
+            }
+        });
+    }
+
+    // 传送 JSON 数据
+    // function submit() {
+    //     var data = {"id":1,
+    //         "name": "dada",
+    //         "cId": 4,
+    //         "gender": "Female",
+    //         "nature":"Optimistic"}
+    //     alert(data);
+    //     $.ajax({
+    //         url:'/register',
+    //         method:'post',
+    //         data: JSON.stringify(data),
+    //         contentType: "application/json",
+    //         dataType:'JSON',
+    //         success:function(result){
+    //             if(result != null) {
+    //                 alert("修改成功！");
+    //             }
+    //         },
+    //         error:function (data) {
+    //         }
+    //     });
+    // }
+    // @RequestBody Map<String, String> map
+
+    // $(function(){
+    //     $("#fm").submit(function(){
+    //         alert(111);
+    //         $.post("${ctx}}/register", $(this).serialize()
+    //             ,function(data){
+    //                 if(data){
+    //                     alert("新增成功");
+    //                     window.location.href = "${ctx}/userssss/list";
+    //                 }else{
+    //                     alert("新增失败");
+    //                 }
+    //             });
+    //         return false;
+    //     });
+    // })
+
+</script>

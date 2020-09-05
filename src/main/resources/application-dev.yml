@@ -1,0 +1,15 @@
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/shenxiaojie?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true
+    username: root
+    password: 123456
+  # 时间戳统一转换，否则返回格林尼治时间
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+

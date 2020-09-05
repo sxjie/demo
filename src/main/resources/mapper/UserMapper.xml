@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hexin.mapper.UserMapper">
+
+
+    <select id="findAll" resultType="com.hexin.entity.User">
+		SELECT * FROM USER
+	</select>
+
+	<insert id="insertUser" parameterType="com.hexin.entity.User" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO USER (username,password,nick_name,sex,status, create_time, update_time)VALUES (#{username},#{password},#{nickName},#{sex},#{status}, now(),now())
+	</insert>
+
+    <select id="findUserById" resultType="com.hexin.entity.User">
+		SELECT * FROM USER WHERE id = #{id}
+	</select>
+
+    <delete id="delUserById" parameterType="Integer">
+		DELETE from USER WHERE id = #{id}
+	</delete>
+
+    <update id="updateUserById" parameterType="com.hexin.entity.User">
+		update USER set username=#{username}, password=#{password}, nick_name=#{nickName}, sex = #{sex}, status = #{status}, update_time = #{updateTime} where id=#{id}
+	</update>
+
+    <select id="login" parameterType="com.hexin.entity.User" resultType="com.hexin.entity.User">
+		SELECT * FROM user WHERE username=#{username}
+	</select>
+
+	<select id="findAllByName" resultType="com.hexin.entity.User">
+		select * from user where 1 = 1
+		<if test="username != '' and username != null">
+			<bind name="bindName" value="'%' + username + '%'"/>
+			and username like #{bindName}
+		</if>
+		<if test="sex != '' and sex != null">
+			and sex = #{sex}
+		</if>
+
+	</select>
+	<select id="userInfo" resultType="map">
+		SELECT u.*, r.role_name FROM user u INNER JOIN role r ON u.password = r.pid
+	</select>
+
+	<insert id="insertList" parameterType="java.util.List">
+		insert into role(
+		`role_name`,
+		pid
+		)
+		values
+		<foreach collection="list" item="item" index= "index" separator =",">
+			(
+			#{item.roleName},
+			#{item.pid}
+			)
+		</foreach>
+	</insert>
+
+	<select id="selectByPage" resultType="com.hexin.entity.User">
+		select * from  user
+	</select>
+
+
+
+</mapper>
