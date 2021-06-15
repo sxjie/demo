@@ -5,11 +5,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hexin.common.RedisUtils;
-import com.hexin.entity.*;
+import com.hexin.entity.Role;
+import com.hexin.entity.User;
 import com.hexin.service.UserService;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
-import org.apache.commons.collections4.multiset.SynchronizedMultiSet;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,17 +21,17 @@ import redis.clients.jedis.Jedis;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.*;
 
-
+//bb
 @Controller
 public class UserController {
-///aaa
+
     private static Logger log = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
@@ -327,13 +325,6 @@ public class UserController {
 //    public void LocalHtml2Pdf() {
 //        System.out.println("定时测试");
 //    }
-
-
-
-
-
-
-
     @RequestMapping("ac")
     @ResponseBody
     public void ac() throws Exception {
@@ -361,7 +352,7 @@ public class UserController {
         Map<String, String> map = new HashMap<>();
         map.put("one", "one");
         map.put("two", "two");
-        for (Map.Entry<String, String> entry : map.entrySet()){
+        for (Map.Entry<String, String> entry : map.entrySet()) {
             System.out.println(map.containsKey("one"));
         }
         //cc();
