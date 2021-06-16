@@ -31,6 +31,7 @@ import java.util.concurrent.*;
 @Controller
 public class UserController {
 // aaa
+// bbb
     private static Logger log = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
