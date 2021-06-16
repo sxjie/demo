@@ -28,12 +28,11 @@ import java.text.DecimalFormat;
 import java.util.*;
 import java.util.concurrent.*;
 
-//bb
 @Controller
 public class UserController {
 
     private static Logger log = LoggerFactory.getLogger(UserController.class);
-    // aaaaaaaaa
+
     @Autowired
     private UserService userService;
 
